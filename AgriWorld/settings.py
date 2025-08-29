@@ -5,8 +5,8 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
-SECRET_KEY = config("SECRET_KEY")
-DEBUG = config("DEBUG", cast=bool, default=False)
+SECRET_KEY = config("SECRET_KEY1")
+DEBUG = config("DEBUG1", cast=bool, default=False)
 ALLOWED_HOSTS = ["agriworld.onrender.com", "www.agriworld.com", "localhost", "127.0.0.1"]
 CSRF_TRUSTED_ORIGINS = [
     "https://agriworld.onrender.com",
@@ -43,8 +43,8 @@ AUTHENTICATION_BACKENDS = (
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': config("GOOGLE_CLIENT_ID"),
-            'secret': config("GOOGLE_CLIENT_SECRET"),
+            'client_id': config("GOOGLE_CLIENT_ID1"),
+            'secret': config("GOOGLE_CLIENT_SECRET1"),
         },
         'AUTH_PARAMS': {
             'access_type': 'online',
@@ -99,8 +99,12 @@ WSGI_APPLICATION = 'AgriWorld.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DB_NAME1'),
+        'USER': config('DB_USER1'),
+        'PASSWORD': config('DB_PASSWORD1'),
+        'HOST': config('DB_HOST1'),
+        'PORT': config('DB_PORT1', default='5432'),
     }
 }
 
