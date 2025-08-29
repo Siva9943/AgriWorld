@@ -7,7 +7,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security
 SECRET_KEY = config("SECRET_KEY")
 DEBUG = config("DEBUG", cast=bool, default=False)
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["agriworld.onrender.com", "www.agriworld.com", "localhost", "127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://agriworld.onrender.com",
+    "https://www.agriworld.com",
+]
 
 # Installed Apps
 INSTALLED_APPS = [
