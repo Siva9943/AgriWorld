@@ -97,16 +97,22 @@ WSGI_APPLICATION = 'AgriWorld.wsgi.application'
 
 # Database
 # Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DB_NAME1'),
+#         'USER': config('DB_USER1'),
+#         'PASSWORD': config('DB_PASSWORD1'),
+#         'HOST': config('DB_HOST1'),
+#         'PORT': config('DB_PORT1', default='5432'),
+#     }
+# }
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME1'),
-        'USER': config('DB_USER1'),
-        'PASSWORD': config('DB_PASSWORD1'),
-        'HOST': config('DB_HOST1'),
-        'PORT': config('DB_PORT1', default='5432'),
-    }
+    'default': dj_database_url.config(default=config("DB_LINK"))
 }
+
 
 # Password validators
 AUTH_PASSWORD_VALIDATORS = [
