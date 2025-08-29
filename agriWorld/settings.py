@@ -71,7 +71,7 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
-ROOT_URLCONF = 'farmerworld.urls'
+ROOT_URLCONF = 'AgriWorld.urls'
 
 TEMPLATES = [
     {
@@ -89,7 +89,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'farmerworld.wsgi.application'
+WSGI_APPLICATION = 'AgriWorld.wsgi.application'
 
 # Database
 # Database
