@@ -1,8 +1,9 @@
 from pathlib import Path
 import os
 from decouple import config
-
+import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
+print("DB_LINK from .env:", config("DB_LINK"))
 
 # Security
 SECRET_KEY = config("SECRET_KEY1")
@@ -108,7 +109,7 @@ WSGI_APPLICATION = 'AgriWorld.wsgi.application'
 #         'PORT': config('DB_PORT1', default='5432'),
 #     }
 # }
-import dj_database_url
+
 
 DATABASES = {
     'default': dj_database_url.config(default=config("DB_LINK"))

@@ -32,17 +32,19 @@ def signup(request):
             user_info = User.objects.filter(email=email).first()
 
             # Save user details
-            User_Details.objects.create(
-                user=user_info,
-                username=username,
-                email=email,
-                district=district,
-                role=role
-            )
-            print("User details saved.")
+            if role=="user":
+                User_Details.objects.create(
+                    user=user_info,
+                    username=username,
+                    email=email,
+                    district=district,
+                    role=role
+                )
+                print("User details saved.")
+                return redirect('home')
 
             # Save seller details if applicable
-            if role == 'seller':
+            elif role == 'seller':
                 Seller.objects.create(
                     user=user_info,
                     name=username,
@@ -57,8 +59,9 @@ def signup(request):
                     state=request.POST.get('state')
                 )
                 print("Seller details saved.")
-
-            return redirect('login_info')
+                return redirect('login_info')
+            else:
+                print("please choose role")
         else:
             print("error")
             return redirect('signup')
